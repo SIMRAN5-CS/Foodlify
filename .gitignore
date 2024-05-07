@@ -1,3 +1,6 @@
 /node_modules
 /.parcel-cache
-/.dist
+/dist
+/Cart.js
+/ep2.txt
+/README.md
