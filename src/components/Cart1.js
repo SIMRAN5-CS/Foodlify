@@ -34,7 +34,10 @@ const Cart1=()=>{
         <div className="p-4">
         <ItemListCart data={items}></ItemListCart>
         </div>
-      { !price.isNaN && (
+       {/* { isNaN(price) &&  console.log("price ia nan")} */}
+       {/* {console.log(price)} */}
+      { !isNaN(price) && (
+      
         <div className="p-4 flex justify-evenly">
             <h2 className="font-semibold ">To Pay</h2>
             <h2 className=" border-t-2 border-black font-bold">Rs. {price}</h2>
