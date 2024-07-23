@@ -42,7 +42,7 @@ const Header = () => {
                 <li  className="font-bold text-xl p-5 hover:border-b-4 border-[#f05a35]">
                 <Link to="/cart">Cart({" "+cartItems.length+"items "})</Link></li>
                 <li  className="p-5 hover:border-b-4 border-[#f05a35] ">
-                <Link to="/contact">Contact Us</Link></li>
+                <Link to="/contact">Contact Me</Link></li>
                  {loggedInUser&&<li className="p-5 border-2 border-black bg-red-300 rounded-full min-w-32" >{loggedInUser}</li>}
                 {/* <li className="p-5 border-2 border-black bg-red-300 rounded-full min-w-30" >{loggedInUser}</li> */}
                 <button className="font-semibold text-2xl p-3 mt-2 mb-1 w-28 ml-[15]  pointer-events-auto border-solid border-slate-800 border-2 rounded-md bg-[#f05a35]" onClick={()=>{

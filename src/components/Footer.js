@@ -1,5 +1,5 @@
 const Footer=()=>{
-    return(<div className="mt-16 ">
+    return(<div className="mt-16  ">
     <div className="bg-gray-800 text-white py-8 top-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">

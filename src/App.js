@@ -11,7 +11,6 @@ import Shimmer from "./components/Shimmer.js";
 import UserContext from "./utils/UserContext.js";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore.js";
-import Cart from "./components/Cart.js";
 import Cart1 from "./components/Cart1.js";
 import CategorySearch from "./components/CategorySearch.js";
 import Footer from "./components/Footer.js";
@@ -36,7 +35,7 @@ function Applayout() {
   return (
     <Provider store={appStore}>
       <UserContext.Provider value={{ loggedInUser: userName, setUserName,vegBtn:valVegBtn,setValVegBtn,nonVegBtn:valNonVegBtn,setValNonVegBtn }}>
-        <div className="app-layout">
+        <div className="app-layout flex flex-col h-svh justify-between">
           <Header />
           <Outlet />
           <Footer />

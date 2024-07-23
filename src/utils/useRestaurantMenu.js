@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MENU_API } from "./constants";
 
-const useRestaurantMenu = (resid) => {
+const useRestaurantMenu = (resId) => {
     const [resInfo, setResInfo] = useState(null)
     //fetch data
     useEffect(() => {
@@ -9,7 +9,7 @@ const useRestaurantMenu = (resid) => {
     }, [])
 
     const fetchData = async () => {
-        const data = await fetch(MENU_API + resid);
+        const data = await fetch(`https://backendfood-app.onrender.com/api/restaurants/Menu?lat=29.15010&lng=75.71760&resId=${resId}` );
         const json = await data.json();
         setResInfo(json?.data);
         // console.log("resInfo",resInfo)

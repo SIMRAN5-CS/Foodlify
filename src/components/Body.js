@@ -32,7 +32,7 @@ const Body = () => {
   
 
 
-  if (!listOfRestaurants) {
+  if (listOfRestaurants.length===0) {
     return <Shimmer />;
   }
   if (onlineStatus === false) {
@@ -96,6 +96,7 @@ const Body = () => {
         </input>
         </div>
       </div>
+
       
       <div className="flex flex-wrap gap-8 mt-8 mb-8 ml-8 mr-8 ">
         
