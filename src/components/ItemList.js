@@ -60,7 +60,7 @@ export const ItemList = (props) => {
 
   {/* Right Part - Image */}
   {item.card.info.imageId ? (
-    <div className="h-28 sm:h-[118px] w-full sm:w-48 relative mt-4 sm:mt-0">
+    <div className="h-28 sm:h-[140px] w-full sm:w-48 relative mt-4 sm:mt-0">
       <button
         onClick={() => { handleAdd(item); }}
         className="w-3/4 font-semibold text-lg bg-white border-black shadow-lg shadow-[#e9e9eb] p-2 absolute rounded-md text-[#60b246] left-1/2 transform -translate-x-1/2 -bottom-4"

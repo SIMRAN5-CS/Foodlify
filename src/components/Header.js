@@ -66,12 +66,14 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
+            <Link to="/">
             <div className="flex  gap-2">
             <img src={LOGO_URL} className="h-16 w-16 object-cover rounded-full"></img>
             <div className="flex-shrink-0 flex items-center">
               <span className="text-2xl font-bold text-white">Foodlify</span>
             </div>
             </div>
+            </Link>
   
             {/* Desktop Navigation */}
             <div className="hidden md:block">
