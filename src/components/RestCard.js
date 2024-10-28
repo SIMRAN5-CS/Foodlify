@@ -10,7 +10,7 @@ const Restcard = (props) => {
       <div className="     hover:scale-95  hover: z-0">
         <div className="">
           <img
-            className=" w-[273px] h-[182px] object-cover rounded-md"
+            className=" w-[290px] h-[220px] object-cover bottom-0 rounded-md"
             src={CDN_URL + resData.cloudinaryImageId}
           ></img>
         </div>

@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux"
 import { Rest_IMG } from "../utils/constants";
-import { ItemList } from "./ItemList";
 import ItemListCart from "./ItemListCart"
 
 const Cart1 = () => {
@@ -35,7 +34,7 @@ const Cart1 = () => {
                     <ItemListCart data={items}></ItemListCart>
                 </div>
                 {/* { isNaN(price) &&  console.log("price ia nan")} */}
-                {/* {console.log(price)} */}
+                {console.log(price)}
                 {!isNaN(price) && (
 
                     <div className="p-4 flex justify-evenly">

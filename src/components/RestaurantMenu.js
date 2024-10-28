@@ -85,7 +85,7 @@ const RestaurantMenu = () => {
   };
 
   return (
-    <div className="w-1/2 mx-auto my-11 ">
+    <div className="w-3/4 md:w-1/2 mx-auto my-11 ">
       <div className=" rounded-b-[36px] border-t-0 border-l-0 border-r-0 border-4 bg-gradient-to-bl from-[#ffffff] to-[#ececf2] border-gray-500 p-4">
         <div className=" m-2 mt-4 text-left border-dashed border-b-2 border-[#d3d3d3]  ">
           <div className=" font-bold text-4xl p-2">{name}</div>
@@ -100,7 +100,6 @@ const RestaurantMenu = () => {
           {avgRating}
           <span className="font-semibold">({totalRatingsString})</span>
         </div>
-        <div className="p-2"><i className="fa  mx-2">&#xf206;</i>{feeDetails.message}</div>
         <div className="flex gap-4 font-semibold text-lg">
           <div className="p-2">
             <i className="fa text-lg px-2">&#xf017;</i>

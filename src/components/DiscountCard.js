@@ -1,20 +1,23 @@
 import { DiscIcon } from "../utils/constants";
+
 const DiscountCard = ({ data }) => {
-  // console.log("data", data);
-  const { header,couponCode } = data;
+  const { header, couponCode } = data;
 
   return (
-    <div className="  w-full rounded-lg border-2 border-[#f05a35]    ">
-      <div className="w-[330px] flex gap-3 p-2" >
-        <div className="">
-        <img className="h-[48px] w-[48px]" src={DiscIcon}></img>
+    <div className="flex-shrink-0 w-[180px] sm:w-[200px] p-3 rounded-lg border-2 border-orange-500 bg-white shadow-md">
+      <div className="flex items-center gap-3">
+        <div className="flex-shrink-0">
+        <img className="h-6 w-6" src={DiscIcon}></img>
         </div>
         <div>
-          <div className="text-lg font-bold ">{header}</div>
-          <div className="text-sm font-bold text-[#02060c73]">{couponCode}</div>
+          <div className="text-sm font-bold text-gray-800">{header}</div>
+          {couponCode && (
+            <div className="text-xs font-semibold text-gray-500">Use {couponCode}</div>
+          )}
         </div>
       </div>
     </div>
   );
 };
+
 export default DiscountCard;

@@ -3,6 +3,8 @@ import { CAT_SEARCH_API } from "../utils/constants";
 import Restcard from "./RestCard";
 import { WithDiscount } from "./RestCard";
 import { Link, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import Error from "./Error";
 
 
 const CategorySearch = () => {
@@ -13,17 +15,27 @@ const CategorySearch = () => {
    console.log("para",entityId);
  
   useEffect(() => {
+
     const fetchData = async () => {
-      const data = await fetch(CAT_SEARCH_API + entityId + part);
-      const json = await data.json();
-      //  console.log("data",data);
-    //   console.log("data fetched ");
-       
-       setCards(json.data.cards);
-    //   console.log("catsearchdata", json.data.cards);
-    };
-    fetchData();
+      try {
+          const response = await fetch(CAT_SEARCH_API + entityId + part);
+          if (!response.ok) {
+              throw new Error("Network response was not ok");
+          }
+          const json = await response.json();
+          setCards(json.data.cards);
+      } catch (error) {
+          toast.error("Some error occurred. Please use a CORS extension.");
+          console.error("Fetch error:", error); // Log the error for debugging
+      }
+  };
+  fetchData();
+
   }, []);
+
+  if(cards.length==0){
+    return <Error/>
+  }
   const resList=cards.filter((item)=>{
  return item?.card?.card["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.Restaurant";
   })
@@ -56,10 +68,6 @@ const CategorySearch = () => {
         })}
         
       </div>
-
-    
-      
-      {/* <h1>this is CategorySearch results page</h1> */}
     </div>
   );
 };

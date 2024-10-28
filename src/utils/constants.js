@@ -7,3 +7,4 @@ export const DiscIcon="https://media-assets.swiggy.com/swiggy/image/upload/fl_lo
 export const Rest_IMG="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_100,h_100,c_fill/"
 export const CAT_SEARCH_API ="https://www.swiggy.com/dapi/restaurants/list/v5?lat=29.1727303&lng=75.7309029&collection=";
 // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=29.1727303&lng=75.7309029&collection=83637&tags=layout_BAU_Contextual&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
+// https://backendfood-app.onrender.com/api/restaurants/Menu?lat=29.15010&lng=75.71760&resId=${resId}

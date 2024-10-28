@@ -14,6 +14,9 @@ import appStore from "./utils/appStore.js";
 import Cart1 from "./components/Cart1.js";
 import CategorySearch from "./components/CategorySearch.js";
 import Footer from "./components/Footer.js";
+import Account from "./components/Account.js";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //chunking
 //code splitting
@@ -35,11 +38,13 @@ function Applayout() {
   return (
     <Provider store={appStore}>
       <UserContext.Provider value={{ loggedInUser: userName, setUserName,vegBtn:valVegBtn,setValVegBtn,nonVegBtn:valNonVegBtn,setValNonVegBtn }}>
-        <div className="app-layout flex flex-col h-svh justify-between">
-          <Header />
+        <div className="min-h-screen overflow-x-hidden flex flex-col h-svh justify-between">
+          <Header />  
+          <main className="flex-grow">
           <Outlet />
+          </main>
           <Footer />
-
+          <ToastContainer position="top-right"/>
         </div>
       </UserContext.Provider>
     </Provider>
@@ -86,7 +91,12 @@ const appRouter = createBrowserRouter([
       },
       { path:"/collections/:entityId",
       element:<CategorySearch/>,
-      }
+      },
+      {
+        path:"/account",
+        element:<Account/>
+      },
+
     ],
     errorElement: <Error />,
   },

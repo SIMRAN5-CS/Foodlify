@@ -5,75 +5,32 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useResList from "../useResList";
 import UserContext from "../utils/UserContext";
-import Carousel from "./Carousel";
+// import Carousel from "./Carousel";
+import { CiSearch } from "react-icons/ci";
+import { lazy,Suspense } from "react";
+
 
 const Body = () => {
+  const Carousel =lazy(() => import('./Carousel'));
   const [listOfRestaurants, setlistOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus();
   const resList = useResList();
-  //
   
-  // console.log("userinfo",loggedInUser)
   const {loggedInUser,setUserName}=useContext(UserContext);
-  // const data=useContext(UserContext);
-  // console.log("data",data)
+
  
 
   //higher order component ka instance bnana pdea to use it in differnet module
   const RestCardDiscount = WithDiscount(Restcard);
-//  console.log(resList)
   useEffect(() => {
     setFilteredRestaurants(resList);
     setlistOfRestaurants(resList);
   }, [resList]);
   // console.log(listOfRestaurants)
-  
-
-
-  if (listOfRestaurants.length===0) {
-    return <Shimmer />;
-  }
-  if (onlineStatus === false) {
-    return <h1>Check Your Internet Connection</h1>;
-  }
-  // console.log("listres", listOfRestaurants);
-
-  return (
-    <div className="w-10/12 m-auto no-underline">
-      <Carousel/>
-
-      <div className="flex  mt-4 mb-2 justify-evenly">
-        
-          <button
-            className="hover:scale-105 font-semibold text-lg  p-[6px] border-solid border-red-400 border-2  rounded-[5px]"
-            onClick={() => {
-              let filteredList = listOfRestaurants.filter((restaurant) => {
-                return restaurant.info.avgRating > 4;
-              });
-              setFilteredRestaurants(filteredList);
-            }}
-          >
-            {" "}
-            Top Rated Restaurants★ {" "}
-          </button>
-        
-        <div className="w-1/2 hover:scale-105">
-          <input 
-            type="text"
-            placeholder=""
-            
-            onChange={(e) => {
-              setSearchText(e.target.value);
-            }}
-            className="outline-none text-lg px-[4px] border-rose-400 border-2 py-[6px] rounded-[5px] w-9/12"
-          ></input>
-          
-
-          <button
-            className=" hover:scale-105 font-medium text-lg  py-[6px] p-2 w-max border-solid border-red-400 border-2 border-l-0  rounded-[5px]"
-            onClick={() => {
+  const handleSearch=()=>{
+    
               const filteredRestaurantList = listOfRestaurants.filter(
                 (restaurant) => {
                   return restaurant.info.name
@@ -82,20 +39,60 @@ const Body = () => {
                 }
               );
               setFilteredRestaurants(filteredRestaurantList);
-            }}
-          >
-           Search <i className="fa ">&#xf002;</i>
-          </button>
+            
+  }
+
+
+  if (listOfRestaurants.length===0) {
+
+    return (
+    <div className="w-10/12 m-auto no-underline">
+      <Shimmer />
+      </div>);
+  }
+  if (onlineStatus === false) {
+    return <h1>Check Your Internet Connection</h1>;
+  }
+  // console.log("listres", listOfRestaurants);
+  const handleTopRated = () => {
+    const filteredList = listOfRestaurants.filter((restaurant) => restaurant.info.avgRating > 4)
+    setFilteredRestaurants(filteredList)
+  }
+
+
+  return (
+    <div className="w-10/12 m-auto no-underline">
+    <Suspense fallback={<div>Loading...</div>}>
+        <Carousel />
+      </Suspense>
+      {/* <Carousel/> */}
+      <div className="max-w-4xl mx-auto p-4">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <button
+          onClick={handleTopRated}
+          className="w-full sm:w-auto px-6 py-3 text-lg font-semibold text-primary bg-white border-2 border-primary rounded-full transition-all hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        >
+          Top Rated Restaurants ★
+        </button>
+        <div className="w-full sm:w-2/3 relative">
+  <input
+    type="text"
+    placeholder="Search for restaurants"
+    onChange={(e) => setSearchText(e.target.value)}
+    className="w-full py-3 px-4 pr-12 text-lg border-2 border-primary rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+  />
+  <button
+    onClick={handleSearch}
+    className="absolute right-3 top-1/2 transform -translate-y-1/2 p-2 text-primary hover:text-primary-dark focus:outline-none"
+  >
+    <CiSearch className="h-6 w-6 text-primary" />
+  </button>
+</div>
+
 
         </div>
-        <div  className=" text-lg  p-[6px] border-solid border-red-400 border-2  rounded-[5px]">
-        <input placeholder="Enter Username" className="outline-none" type="text" value={loggedInUser=="@xyzabc"?"":loggedInUser} onChange={(e)=>{
-          setUserName(e.target.value);
-        }}>
-         {/* {console.log("username",userName)} */}
-        </input>
         </div>
-      </div>
+      
 
       
       <div className="flex flex-wrap gap-8 mt-8 mb-8 ml-8 mr-8 ">

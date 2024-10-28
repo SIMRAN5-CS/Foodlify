@@ -17,7 +17,7 @@ class About extends Component {
           About{" "}
         </h1>
         <UserClass />
-        <div className="bg-slate-200 text-center font-medium text-lg p-2 shadow-md m-4">
+        {/* <div className="bg-slate-200 text-center font-medium text-lg p-2 shadow-md m-4">
           User Info
 
           <ul>
@@ -28,7 +28,7 @@ class About extends Component {
               }}
             </UserContext.Consumer>
           </ul>
-        </div>
+        </div> */}
       </div>
     );
   }

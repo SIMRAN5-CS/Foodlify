@@ -1,4 +1,5 @@
 import React from "react";
+
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
@@ -7,21 +8,15 @@ class UserClass extends React.Component {
       location: "",
       email: "",
       avatar_url: "",
-      node_id: " ",
-      login: " ",
-      id: " ",
+      node_id: "",
+      login: "",
+      id: "",
     };
-    // console.log("child constructor")
   }
-  componentDidUpdate() {
-    // console.log("component did update ")
-  }
-  async componentDidMount() {
-    // console.log(this.props.name+" component did mount")
 
+  async componentDidMount() {
     const data = await fetch("https://api.github.com/users/SIMRAN5-CS");
     const json = await data.json();
-    // console.log(json.node_id)
     this.setState({
       name: json.name,
       location: json.location,
@@ -32,43 +27,44 @@ class UserClass extends React.Component {
       id: json.id,
     });
   }
-  componentWillUnmount() {
-    // console.log("component unmount")
-  }
 
   render() {
-    // console.log("child render")
     const { name, login, id, avatar_url, node_id, email, location } =
       this.state;
     return (
-      <div className="bg-slate-200 text-center font-medium text-lg p-2 shadow-md">
-        Creator info
-        <div className="  flex justify-evenly ">
-          <img
-            className="rounded-full border-2 border-black w-[200] h-[200]"
-            src={avatar_url}
-          ></img>
-          <ul className=" text-left  ">
-            <li className="p-2">
-              Name:  { name}
-            </li>
-            <li className="p-2">
-              GitHub Id:  
-              {id}
-            </li>
-            <li className="p-2">
-              GitHub UserName:
-              {login}
-            </li>
-            <li className="p-2">
-              nodeid: 
-              { node_id}
-            </li>
-          </ul>
+      <div className="flex items-center justify-center  bg-gray-50 p-4 h-fu;;">
+        <div className="max-w-md w-full bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="flex justify-center bg-blue-200 py-4">
+            <img
+              className="rounded-full border-4 border-white w-32 h-32"
+              src={avatar_url}
+              alt={`${name}'s avatar`}
+            />
+          </div>
+          <div className="p-6">
+            <h2 className="text-2xl font-bold text-center mb-4">{name}</h2>
+            <ul className="text-gray-700 space-y-2">
+              <li>
+                <strong>GitHub ID:</strong> {id}
+              </li>
+              <li>
+                <strong>Username:</strong> {login}
+              </li>
+              <li>
+                <strong>Node ID:</strong> {node_id}
+              </li>
+              <li>
+                <strong>Email:</strong> {email || "Not available"}
+              </li>
+              <li>
+                <strong>Location:</strong> {location || "Not specified"}
+              </li>
+            </ul>
+          </div>
         </div>
-
       </div>
     );
   }
 }
+
 export default UserClass;
