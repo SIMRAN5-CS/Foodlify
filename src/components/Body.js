@@ -95,7 +95,7 @@ const Body = () => {
       
 
       
-      <div className="flex flex-wrap gap-8 mt-8 mb-8 ml-8 mr-8 ">
+      <div className=" flex flex-wrap gap-8 mt-8 mb-8 ml-8 mr-8 justify-center ">
         
         {filteredRestaurant.map((restaurant) => {
           {/* console.log(restaurant) */}
