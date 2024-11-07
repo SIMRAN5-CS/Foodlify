@@ -46,7 +46,7 @@ const Body = () => {
   if (listOfRestaurants.length===0) {
 
     return (
-    <div className="w-10/12 m-auto no-underline">
+    <div className="w-10/12 m-auto justify-center  no-underline">
       <Shimmer />
       </div>);
   }
